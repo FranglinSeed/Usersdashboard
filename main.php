@@ -47,24 +47,6 @@
                 <th>User IP</th>
             </thead>
             <tbody id="tb_onlineuserlist">
-                <tr>
-                    <td>Jill</td>
-                    <td>2020-12-12 12:12:12</td>
-                    <td>2020-12-12 12:12:12</td>
-                    <td>183.15.154.14</td>
-                </tr>
-                <tr>
-                    <td>Jhon</td>
-                    <td>2020-12-12 12:12:12</td>
-                    <td>2020-12-12 12:12:12</td>
-                    <td>183.15.154.14</td>
-                </tr>
-                <tr>
-                    <td>Aleksei</td>
-                    <td>2020-12-12 12:12:12</td>
-                    <td>2020-12-12 12:12:12</td>
-                    <td>183.15.154.14</td>
-                </tr>
             </tbody>
         </table>
     </form>     
