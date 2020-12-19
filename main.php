@@ -18,7 +18,8 @@
         header("HTTP/1.1 301 Moved Permanently"); 
         header("Location: $url");
     } else {
-        $errStr = loginDB($email, $password);
+        $dbConnect = new DBManger();
+        $errStr = $dbConnect->loginDB($email, $password);
 
         if(!empty($errStr)) {
             $queryPara = "err=".$errStr;
@@ -26,7 +27,7 @@
             header("HTTP/1.1 301 Moved Permanently"); 
             header("Location: $url");    
         } else {
-            updateLoginInfo($email);
+            $dbConnect->updateLoginInfo($email);            
         }
     }
 ?>
