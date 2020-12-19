@@ -46,7 +46,7 @@ function callJsonPhp(callback, paraStr) {
     r.send(null);
 }
 function isEmpty(str) {
-    if(str==null || str == "" || str.length == 0) {
+    if(str=="null" || str==null || str == "" || str.length == 0) {
         return true
     }
     return false;
@@ -96,7 +96,7 @@ function onSignupUser() {
     //usage:    
     document.getElementById('errStr').innerHTML = "";
     readTextFile(databasepath, function(text){
-        if(text != "" && text != null) {
+        if(! isEmpty(text)) {
             data = JSON.parse(text);  
             for(let i = 0; i < data.length; i++) {
                 item = data[i];
@@ -117,7 +117,7 @@ function onSignupUser() {
             // });          
         }
         
-        if(text == null || text == "" || hasSameUser == false) {
+        if( isEmpty(text) || hasSameUser == false) {
             data.push(newUser);        
             var result = JSON.stringify(data);
             var paraStr = "paraMode=signup&paraStr=" + result;
