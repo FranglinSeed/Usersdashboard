@@ -96,7 +96,7 @@ function onSignupUser() {
     //usage:    
     document.getElementById('errStr').innerHTML = "";
     readTextFile(databasepath, function(text){
-        if(text != "") {
+        if(text != "" && text != null) {
             data = JSON.parse(text);  
             for(let i = 0; i < data.length; i++) {
                 item = data[i];
@@ -117,7 +117,7 @@ function onSignupUser() {
             // });          
         }
         
-        if(text == "" || hasSameUser == false) {
+        if(text == null || text == "" || hasSameUser == false) {
             data.push(newUser);        
             var result = JSON.stringify(data);
             var paraStr = "paraMode=signup&paraStr=" + result;
