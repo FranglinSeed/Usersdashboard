@@ -6,7 +6,7 @@
         <script src="js/script.js"></script>
     </head>
     <body onbeforeunload="onLogout()" onunload="onLogout()">        
-        <div class="logo">
+        <header>
             <h1>UsersDashboard</h1>
-        </div>    
-        <div class="container">
+        </header>    
+        <main>

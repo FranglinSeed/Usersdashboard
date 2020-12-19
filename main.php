@@ -3,8 +3,8 @@
 
 <script language="javascript">
     document.addEventListener("DOMContentLoaded", function(event) {
-        getOnlineUserList();
-        setInterval(function(){ getOnlineUserList(); }, 3000);
+        getUserList();
+        setInterval(function(){ getUserList("online"); }, 3000);
     });
 </script>
 
@@ -47,6 +47,21 @@
                 <th>User IP</th>
             </thead>
             <tbody id="tb_onlineuserlist">
+            </tbody>
+        </table>
+        <br/><br/>
+        <input type="button" value="Show All Users" onclick="javascript:toggleUserShow();">
+        <br/><br/>        
+        <table style="width:100%; display:none;" id="table_userlist">
+            <thead>
+                <th>Username</th>
+                <th>Email</th>
+                <th>RegTime</th>
+                <th>LastTime</th>
+                <th>User IP</th>
+                <th>STATE</th>
+            </thead>
+            <tbody id="tb_userlist">
             </tbody>
         </table>
     </form>     

@@ -1,7 +1,7 @@
-</div>    
-        <div class="footer">
+        </main>    
+        <footer>
             <p>Copyright 2019-2020 by Users Data. All Rights Reserved.</p>
-        </div>
+        </footer>
 
     </body>
 </html>

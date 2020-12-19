@@ -10,15 +10,18 @@
         echo false;
     }
 
-    if($paraMode == "getOnlineUser") {
-        $state = "online";
+    if($paraMode == "getUserList") {
         $resultStr = "";   
         $fileterArray = array();
         $jsonString = file_get_contents($database_path);
         $data = json_decode($jsonString, true);
         foreach ($data as $key => $entry) {
-            if ($entry['state'] == $state) {
+            if($paraStr == "all") {
                 array_push($fileterArray, $entry);
+            } else {                
+                if ($entry['state'] == $paraStr) {
+                    array_push($fileterArray, $entry);
+                }
             }
         }
         echo json_encode($fileterArray);

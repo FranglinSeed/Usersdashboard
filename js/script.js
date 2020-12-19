@@ -132,23 +132,48 @@ function onSignupUser() {
     });       
 }
 
-
-function getOnlineUserList() {
+function toggleUserShow() {
+    var x = document.getElementById("table_userlist");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+        getUserList('all');
+    } else {
+        x.style.display = "none";
+    }
+}
+function getUserList(type) {
     var data = new Array;
     var resultStr = '';
-    var paraStr = "paraMode=getOnlineUser";
+    var paraStr = "paraMode=getUserList&paraStr=" + type;
     callJsonPhp(function(text){
         if(text != "") {
             data = JSON.parse(text);  
-            data.forEach(item => {
-                resultStr += "<tr onclick=\"javascript:OnlineUserDetail(\'"+item['email']+"\',\'"+item['agent']+"\',\'"+item['reg_time']+"\',\'"+item['login_cnt']+"\')\">";
-                resultStr += "<td>" + item['name'] + "</td>";
-                resultStr += "<td>" + item['login_time'] + "</td>";
-                resultStr += "<td>" + item['last_time'] + "</td>";
-                resultStr += "<td>" + item['ip'] + "</td>";
-                resultStr += "</tr>";
-            });       
-            document.getElementById("tb_onlineuserlist").innerHTML = resultStr;
+            if(type == "all") {
+                data.forEach(item => {
+                    resultStr += "<tr onclick=\"javascript:OnlineUserDetail(\'"+item['email']+"\',\'"+item['agent']+"\',\'"+item['reg_time']+"\',\'"+item['login_cnt']+"\')\">";
+                    resultStr += "<td>" + item['name'] + "</td>";
+                    resultStr += "<td>" + item['email'] + "</td>";
+                    resultStr += "<td>" + item['reg_time'] + "</td>";
+                    resultStr += "<td>" + item['last_time'] + "</td>";
+                    resultStr += "<td>" + item['ip'] + "</td>";
+                    resultStr += "<td>" + item['state'] + "</td>";
+                    resultStr += "</tr>";
+                }); 
+            } else {
+                data.forEach(item => {
+                    resultStr += "<tr onclick=\"javascript:OnlineUserDetail(\'"+item['email']+"\',\'"+item['agent']+"\',\'"+item['reg_time']+"\',\'"+item['login_cnt']+"\')\">";
+                    resultStr += "<td>" + item['name'] + "</td>";
+                    resultStr += "<td>" + item['login_time'] + "</td>";
+                    resultStr += "<td>" + item['last_time'] + "</td>";
+                    resultStr += "<td>" + item['ip'] + "</td>";
+                    resultStr += "</tr>";
+                }); 
+            }                  
+            if(type == "all") {
+                document.getElementById("tb_userlist").innerHTML = resultStr;
+            } else {
+                document.getElementById("tb_onlineuserlist").innerHTML = resultStr;
+            }
         }
     },paraStr);
 }
