@@ -3,7 +3,7 @@
 
 <script language="javascript">
     document.addEventListener("DOMContentLoaded", function(event) {
-        getUserList();
+        getUserList("online");
         setInterval(function(){ getUserList("online"); }, 3000);
     });
 </script>
